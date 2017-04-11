@@ -29,19 +29,23 @@ public class Main {
         System.out.println(queue.first() + " " + queue.size());*/
 
         Scanner sc = new Scanner(System.in);
-        int[] arr = new int[100];
+        int[] arr = new int[10];
         for (int i = 0; i < 10; i++) {
             arr[i] = sc.nextInt();
         }
         int n = 3;
+        min(arr, n);
     }
 
     public static void min(int[] a, int n) {
-        Stack stack = new ArrayStackMin();
-        for (int i = 0; i < a.length; i++) {
-            
-            System.out.println(stack.min());
-            stack.poop();
+        Queue queue = new ArrayQueueMin();
+        for (int i = 0; i < n; i++) {
+            queue.push(a[i]);
+        }
+        for (int i = n; i < a.length; i++) {
+            System.out.print(queue.min() + " ");
+            queue.pop();
+            queue.push(a[i]);
         }
     }
 }

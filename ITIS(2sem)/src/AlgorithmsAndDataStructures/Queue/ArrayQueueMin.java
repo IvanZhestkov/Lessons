@@ -9,7 +9,6 @@ import AlgorithmsAndDataStructures.Stack.Stack;
 public class ArrayQueueMin implements Queue {
     private Stack a;
     private Stack b;
-    private boolean flag;
 
     public ArrayQueueMin() {
         a = new ArrayStackMin();
@@ -19,7 +18,6 @@ public class ArrayQueueMin implements Queue {
     @Override
     public void push(Object o) {
         a.push(o);
-        flag = true;
     }
 
     @Override
@@ -29,16 +27,17 @@ public class ArrayQueueMin implements Queue {
                 b.push(a.pop());
             }
         }
-        flag = false;
         return b.top();
     }
 
     @Override
     public Object pop() {
-        while (a.size() > 0) {
+        /*while (a.size() > 0) {
             b.push(a.pop());
         }
         flag = false;
+        return b.pop();*/
+        first();
         return b.pop();
     }
 
@@ -54,6 +53,13 @@ public class ArrayQueueMin implements Queue {
 
     @Override
     public Object min() {
-        return flag ? a.min() : b.min();
+        if (a.size() > 0 && b.size() > 0) {
+            return Math.min((int)a.min(), (int) b.min());
+        }
+        if (a.size() > 0) {
+            return a.min();
+        }
+
+        return b.min();
     }
 }

@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class FactoryMethod {
     public static void main(String[] args) {
-        WatchMaker maker = getMakerByName("Digitald");
+        WatchMaker maker = getMakerByName("Digital");
         Watch watch = maker.creatWatch();
         watch.showTime();
     }
